@@ -1,1 +1,18 @@
-console.log("ok");
+import { fetchTodos, findTodo, toggleTodo,countIncompleteTodos } from "./todo-service.js";
+
+const loaded = await fetchTodos();
+console.log(loaded);
+
+const found = await findTodo(2);
+
+if (found === undefined) {
+  console.log("TODOが見つからない");
+} else {
+  console.log(found.title);
+}
+
+const updated = await toggleTodo(2);
+console.log(updated);
+
+const count = await countIncompleteTodos();
+console.log(`未完了: ${count}件`);
